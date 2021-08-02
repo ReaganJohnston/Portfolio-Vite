@@ -20,33 +20,33 @@ function Animate(){
   const loader = new THREE.TextureLoader();
   const sphere = loader.load('./src/assets/star.png');
   
+  //Renderer thatg augments the camera
   renderer.setPixelRatio( window.devicePixelRatio );
   renderer.setSize( window.innerWidth , window.innerHeight);
   camera.position.setZ(1);
-  
   renderer.render(scene, camera);
   
+  //Calls and constants to add in the custom torus into the threejs scene
   const geometry = new THREE.TorusGeometry(10, 3, 16, 100 )
   const material = new THREE.PointsMaterial({
     size: 0.005,
     map: sphere
   })
   const torus = new THREE.Points(geometry, material);
-  
   scene.add(torus)
   
+  //Create a directional light positioned on the screen so the particles show up
   const pointLight = new THREE.PointLight(0xffffff)
   const ambientLight = new THREE.AmbientLight(0xffffff)
   pointLight.position.set(5, 5, 5)
-  
   scene.add(pointLight, ambientLight)
   
-  // const controls = new OrbitControls(camera, renderer.domElement);
-
+  //Create the particles that make up the spacy-sky
   const particles = new THREE.BufferGeometry;
   const particlesCount = 5000;
   const posArray = new Float32Array(particlesCount * 3);
 
+  //Display the particles randomally on the x and y axis for each reload
   for (let i = 0; i < particlesCount; i++){
     posArray[i] = (Math.random() - 0.5) * 5
   }
@@ -65,10 +65,11 @@ function Animate(){
   function onMouseWheel(event){
     event.preventDefault();
 
-    camera.position.z -= event.deltaY * 0.0005;
+    camera.position.z += event.deltaY * 0.0005;
     camera.position.clampScalar( 0, 10 );
   }
 
+  //Add event listener's that await cursor and scroll movement
   document.addEventListener('wheel', onMouseWheel)
   document.addEventListener('mousemove', animateParticles)
   let mouseX = 0
