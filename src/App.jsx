@@ -20,7 +20,7 @@ function Animate(){
   const loader = new THREE.TextureLoader();
   const sphere = loader.load('./src/assets/star.png');
   
-  //Renderer thatg augments the camera
+  //Renderer that augments the camera
   renderer.setPixelRatio( window.devicePixelRatio );
   renderer.setSize( window.innerWidth , window.innerHeight);
   camera.position.setZ(1);
@@ -69,9 +69,17 @@ function Animate(){
     camera.position.clampScalar( 0, 10 );
   }
 
+  //On window resize, adjust threejs components
+  function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+  }
+
   //Add event listener's that await cursor and scroll movement
   document.addEventListener('wheel', onMouseWheel)
   document.addEventListener('mousemove', animateParticles)
+  window.addEventListener('resize', onWindowResize)
   let mouseX = 0
   let mouseY = 0
   
@@ -96,6 +104,15 @@ function Animate(){
     torus.rotation.z += 0.01;
   
     renderer.render(scene, camera);
+  }
+
+  function onWindowResize() {
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+  
+    renderer.setSize( window.innerWidth, window.innerHeight );
+  
   }
   
   animate();
