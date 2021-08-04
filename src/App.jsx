@@ -1,6 +1,6 @@
 import './style.css'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { MapControls, OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 
 /**
@@ -8,7 +8,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
  * Handles the scroll animation
  * And overall compiler of preceding components
  */
-function Animate(){
+function App(){
   const clock = new THREE.Clock()
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -65,8 +65,8 @@ function Animate(){
   function onMouseWheel(event){
     event.preventDefault();
 
-    camera.position.z += event.deltaY * 0.0005;
-    camera.position.clampScalar( 0, 10 );
+    camera.position.z += event.deltaY * 0.0002;
+    camera.position.clampScalar( 0, 1 );
   }
 
   //On window resize, adjust threejs components
@@ -107,16 +107,13 @@ function Animate(){
   }
 
   function onWindowResize() {
-
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-  
     renderer.setSize( window.innerWidth, window.innerHeight );
-  
   }
   
   animate();
 
 }
 
-export default Animate()
+export default App()
