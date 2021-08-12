@@ -1,0 +1,95 @@
+
+- On home-page stars move around a camera-axis, giving the animation of moving standards
+- Overlay a purple ripple effect, or a purple nebula.
+- Have a purple and gold theme. Emphasing sentences with purple. Underline with gold.
+- Projects are show-cased inside cards, utilise a 3D parallax effect with Tilt.Js
+  https://redstapler.co/tilt-js-parallax-tutorial/
+- Frameworks utilised. Find some small easy to configure animations to implement into the web-page
+
+
+==========================
+Sections
+==========================
+0. Loading Screen
+  - Utilising THREE.JS, display a custom loading page whilst the modules, 3D models and animations are loading
+
+1. Home
+  - Home page that shows stars animated with my name and corresponding sub-titles
+
+2. About
+  - Needs to include the following sub-titles: Main Skills, Tools, Experience, Hobbies
+  - Find a method to push a resume online
+
+3. Projects
+  - Include relevant git-hub projects (make sure to create some more small simple algorithim sorting ones)
+
+4. Future Ventures
+
+5. Frameworks utilised
+
+6. Contact Me
+
+==========================
+Debug
+==========================
+1. Set a maximum screen size, to reduce the need to scale text/words/pictures
+
+==========================
+Navbar
+==========================
+Over the top of the stars animation, have a constant nav-bar for the user to utilise
+  1. Navbar is constant across the entire website.
+  2. Needs to dynamically change depending on the selected entry
+  3. Needs to be transparent
+
+==========================
+About
+==========================
+Include all necessary details found on your resume. Have methods to allow the user to download the resume
+  1. Include details of your main skills, languages, tools and Hobbies
+  2. Implement a download button for your resume. (It won't download the resume, will just display a pdf) 
+
+==========================
+Frameworks
+==========================
+Create a section that show-cases all the different libraries and tools utilised to create the website. Show a step-by-step process
+  1. Animation
+  2. React.Js
+  3. NPM (NodeJS)
+  4. AWS services
+  5. MYSQL
+  6. Production Updating (version control and production)
+
+==========================
+Hosting server
+==========================
+Utilising an AWS EC2 linux server, distribute and continuously keep the server online.
+  1. EC2 hosting only requires minimal computing power, make sure to select a payment plan that only requires minimal RAM, CPU and ethernet
+  2. Should the server go offline, setup scripts to auto-start the webpage as soon as the server is launched
+
+============================
+MYSQL database
+============================
+Handle, save and modify customer data. Get data from POST requests from the website. 
+  1. Create database and tables. Setup relation requirements (E.g. Email: char(256))
+  2. Setup login and account registration on the Ubuntu server. Serve the database on its local-hosting
+  3. Point the RESTful POST endpoints to the server. Test functionality
+
+============================
+Forum Page, Contact Me
+============================
+Implement a forum page for any user to share their details over a RESTful API
+  1. Must send the data utilising RESTful standards
+  2. Local Page must not save any data
+  3. Implement POST endpoints to send the data across to the server
+  4. Test POST endpoint, send fist streams of data to the database
+  5. Setup scripts to handle edge cases. (E.g. Expected responses, and catch statements)
+
+============================
+Autonomous GitHub updates
+============================
+Upon new push activities from source repo, pull the newest version and try to re-launch the front-end website
+  1. Detect changes from GitHub and send an output to the console, await new changes to the source files
+  2. Update the website files (server or RESTful) to match the recent version inside the GitHub Repo
+  3. After update send "OK" response to a .bash script
+  4. Re-launch npm-server with the updated files, utilise a bash script

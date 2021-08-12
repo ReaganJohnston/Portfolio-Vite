@@ -27,12 +27,13 @@ function App(){
   renderer.render(scene, camera);
   
   //Calls and constants to add in the custom torus into the threejs scene
-  const geometry = new THREE.TorusGeometry(10, 3, 16, 100 )
+  const geometry = new THREE.TorusGeometry(10, 3, 20, 100 )
   const material = new THREE.PointsMaterial({
     size: 0.005,
     map: sphere
   })
   const torus = new THREE.Points(geometry, material);
+  torus.position.setZ(-5);
   scene.add(torus)
   
   //Create a directional light positioned on the screen so the particles show up
@@ -79,6 +80,7 @@ function App(){
   //Add event listener's that await cursor and scroll movement
   document.addEventListener('wheel', onMouseWheel)
   document.addEventListener('mousemove', animateParticles)
+  // document.getElementById('')
   window.addEventListener('resize', onWindowResize)
   let mouseX = 0
   let mouseY = 0

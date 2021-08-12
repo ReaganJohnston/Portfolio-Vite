@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import NavBar from './components/navbar.jsx'
+// import NavBar from './components/navbar.jsx'
 
 ReactDOM.render(
   <React.StrictMode>
